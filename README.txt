@@ -41,3 +41,10 @@ PLAYTIME = 100
 ### 참고 링크
 https://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed
 https://en.wikipedia.org/wiki/Hash_function_security_summary
+
+
+
+
+
+
+
