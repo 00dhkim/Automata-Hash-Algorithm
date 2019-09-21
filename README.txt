@@ -9,6 +9,7 @@
 ### rule test
 input데이터들이 유사해도 output matrix가 연관이 없는지?
 유사한 input 비트로 가져다 놓고 matrix들 간의 해밍 거리 측정
+눈사태 효과(avalanche effect)를 확인하기 위해서는 비트 하나를 변경했을 때 나오는 결과의 비트변화가 50%정도여야 함.
 
 ### 현재 가장 필요한 연구
 적은 input data의 경우 눈덩이 효과 없음 -> 이부분 개선
