@@ -67,7 +67,7 @@ int main()
 
 	srand((int)time(NULL));
 
-	printf("input: ");
+//	printf("input: ");
 	scanf("%s", input);
 	if (IS_SALT) {
 		printf("salt: ");
