@@ -7,6 +7,7 @@
 #define PLAYTIME 100
 #define HEIGHT 32
 #define WIDTH 23
+#define IS_SALT 1
 
 char hashtable[64] = {
 						'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 
@@ -68,10 +69,11 @@ int main()
 
 	printf("input: ");
 	scanf("%s", input);
-	printf("salt: ");
-	scanf("%s", salt);
-	strcat(input, salt);
-
+	if (IS_SALT) {
+		printf("salt: ");
+		scanf("%s", salt);
+		strcat(input, salt);
+	}
 	system("pause"); system("cls");
 
 /*	//random input & salt
@@ -118,7 +120,7 @@ int main()
 	for (k = 0; k < WIDTH - j; k++) { //남은 0~5칸 채우기
 		matrix[i][j + k] = (binary[k] == '1' ? 1 : 0);
 	}
-	PrintMatrix(":INIT_MATRIX");
+//	PrintMatrix(":INIT_MATRIX");
 
 	//====================격자로 변환========================
 	//======================================================
@@ -148,13 +150,14 @@ int main()
 
 		memset(matrix2, 0, sizeof(matrix2));
 
-		printf(":%d ", t); PrintMatrix("PLAYING");
+//		printf(":%d ", t); PrintMatrix("PLAYING");
 	}
-	PrintMatrix(":END_PLAY"); 
+
 	//=================세포 자동자 실행======================
 	//======================================================
 	//====================문자로 변환========================
-	
+
+	PrintMatrix(":END_PLAY");
 	printf("Hash Code:\n");
 	
 	i = j = 0;
