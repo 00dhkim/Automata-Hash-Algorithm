@@ -1,6 +1,6 @@
 # Automata-Hash-Algorithm
 ### 요약
-1. 구조 개선하기
+--1. 구조 개선하기--
 2. 규칙 개선하기
 3. 규칙찾는 프로그램 구현하기
 4. rainbow table 회피 확인
@@ -12,13 +12,12 @@
 _①rainbow table 회피, ②충돌이 일어나는지 판단하기_
 
 ### 해야할 일
-input따로, salt따로 배치보다는 input+salt string을 배치하는 것이 좋을 것 같음. **구조 개선하기.**
 적은 input으로도 복잡한 결과를 내려면 **규칙을 개선**해야 한다.
 만약 input이 적을 경우 초기 matrix가 규칙적인 모양새가 나와, 적절한 규칙으로 이를 잘 섞어야 한다. 
 -> 랜덤 규칙을 대입해 가장 좋은 규칙을 찾는 프로그램 만들자.
 
 ### follow-up research goal
-INPUT, OUTPUT Matrix Format 개선 (salt 배치법 등)
+--INPUT, OUTPUT Matrix Format 개선 (salt 배치법 등)--
 최적의 playtime 연구
 최적의 규칙 연구 (2^20가지 경우의 수)
 규칙의 적합도 판단 함수 개선 (타당한 이유를 들어)
