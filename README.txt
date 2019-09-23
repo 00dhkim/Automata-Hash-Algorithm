@@ -6,6 +6,8 @@
 4. rainbow table 회피 확인
 5. 충돌여부 판단
 
+**binary string to decimal 함수 만들기**
+
 ### rule test
 input데이터들이 유사해도 output matrix가 연관이 없는지?
 유사한 input 비트로 가져다 놓고 matrix들 간의 해밍 거리 측정
