@@ -7,7 +7,10 @@
 #define PLAYTIME 100
 #define HEIGHT 32
 #define WIDTH 23
-#define IS_SALT 1
+#define IS_SALT 0
+#define IS_FILE_PRINT 1
+
+FILE *logfp = fopen("PrintLog.txt", "a+");
 
 char hashtable[64] = {
 						'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
@@ -39,12 +42,16 @@ int main()
 
 	printf("input: ");
 	scanf("%s", input);
+	if (IS_FILE_PRINT) fprintf(logfp, "input: %s\n", input);
 	if (IS_SALT) {
 		printf("salt: ");
 		scanf("%s", salt);
 		strcat(input, salt);
+		if (IS_FILE_PRINT) fprintf(logfp, "salt: %s\n", salt);
 	}
-	system("pause"); system("cls");
+	if (!IS_FILE_PRINT) {
+		system("pause"); system("cls");
+	}
 
 //	random_input_salt(20, 5);
 
@@ -54,7 +61,9 @@ int main()
 
 	DO_transform_to_string();	// 문자로 변환
 
-	system("pause");
+	if (IS_FILE_PRINT) fprintf(logfp, "\n==========================\n\n");
+	else system("pause");
+	
 
 	return 0;
 }
@@ -81,19 +90,28 @@ int CharToDec(char c)
 
 void PrintMatrix(const char str[])
 {
-	printf("%s\n", str);
+	if (IS_FILE_PRINT) fprintf(logfp, "%s\n", str);
+	else printf("%s\n", str);
 	for (int i = 0; i < HEIGHT; i++)
 	{
 		for (int j = 0; j < WIDTH; j++)
 		{
-			if (matrix[i][j]) printf("■");
-			else printf("□");
-			//			if (!((j+1) % 6)) printf(" ");
+			if (IS_FILE_PRINT) {
+				fprintf(logfp, "%d", matrix[i][j]);
+			}
+			else {
+				if (matrix[i][j]) printf("■");
+				else printf("□");
+				// if (!((j+1) % 6)) printf(" ");
+			}
 		}
-		printf("\n");
+		if (IS_FILE_PRINT) fprintf(logfp, "\n");
+		else printf("\n");
 	}
-	system("pause");
-	system("cls");
+	if (!IS_FILE_PRINT) {
+		system("pause");
+		system("cls");
+	}
 }
 
 void random_input_salt(int input_size, int salt_size) {
@@ -174,7 +192,8 @@ void DO_transform_to_string(void) {
 	int i = 0, j = 0, t, k, num = 0;
 	
 	PrintMatrix(":END_PLAY");
-	printf("Hash Code:\n");
+	if (IS_FILE_PRINT) fprintf(logfp, "Hash Code:\n");
+	else printf("Hash Code:\n");
 
 	while (!(i == HEIGHT - 1 && j + 5 >= WIDTH))
 	{
@@ -187,7 +206,8 @@ void DO_transform_to_string(void) {
 			num *= 2;
 		}
 		num /= 2;
-		printf("%c", hashtable[num]);
+		if (IS_FILE_PRINT) fprintf(logfp, "%c", hashtable[num]);
+		else printf("%c", hashtable[num]);
 	}
 
 	// 0~5(WIDTH-j)개의 값을 matrix에서 가져오기
@@ -197,6 +217,7 @@ void DO_transform_to_string(void) {
 		num *= 2;
 	}
 	num /= 2;
-	printf("%c\n", hashtable[num]);
+	if (IS_FILE_PRINT) fprintf(logfp, "%c\n", hashtable[num]);
+	else printf("%c\n", hashtable[num]);
 }
 
