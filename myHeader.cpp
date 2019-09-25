@@ -38,23 +38,16 @@ int CharToDec(char c)
 
 void PrintMatrix(const char str[])
 {
-	if (IS_FILE_PRINT) fprintf(logfp, "%s\n", str);
-	else printf("%s\n", str);
+	myPrint("%s\n", str);
 	for (int i = 0; i < HEIGHT; i++)
 	{
 		for (int j = 0; j < WIDTH; j++)
 		{
-			if (IS_FILE_PRINT) {
-				fprintf(logfp, "%d", matrix[i][j]);
-			}
-			else {
-				if (matrix[i][j]) printf("¡á");
-				else printf("¡à");
-				// if (!((j+1) % 6)) printf(" ");
-			}
+			if (matrix[i][j]) myPrint("â– ");
+			else myPrint("â–¡");
+			// if (!((j+1) % 6)) myPrint(" ");
 		}
-		if (IS_FILE_PRINT) fprintf(logfp, "\n");
-		else printf("\n");
+		myPrint("\n");
 	}
 	if (!IS_FILE_PRINT) {
 		system("pause");
@@ -69,22 +62,22 @@ void random_input_salt(int input_size, int salt_size) {
 		salt[i] = hashtable[random(0, 63)];
 }
 
-void DO_transform_to_matrix(void) {	//°İÀÚ·Î º¯È¯
+void DO_transform_to_matrix(void) {	//ê²©ìë¡œ ë³€í™˜
 	int t = 0, i = 0, j = 0, k, num;
 
-	while (!(i == HEIGHT - 1 && j + 6 > WIDTH - 1))	//matrix´Ù Ã¤¿ì¸é Å»ÃâÇÏ±â
+	while (!(i == HEIGHT - 1 && j + 6 > WIDTH - 1))	//matrixë‹¤ ì±„ìš°ë©´ íƒˆì¶œí•˜ê¸°
 	{
 		num = CharToDec(input[t++]);
 		strcpy(binary, "000000");
-		for (k = 5; k >= 0; k--)	// ¹®ÀÚ¸¦ 2Áø¼ö·Î ¸¸µé±â
+		for (k = 5; k >= 0; k--)	// ë¬¸ìë¥¼ 2ì§„ìˆ˜ë¡œ ë§Œë“¤ê¸°
 		{
 			if (num % 2 == 1) binary[k] = '1';
 			num /= 2;
 		}
 		if (t == strlen(input)) t = 0;
 
-		// 2Áø¼ö¸¦ matrix[][]¾È¿¡ ´ã±â
-		if (j + 5 >= WIDTH) {	// ³»¸² ÇØ¾ßÇÏ¸é
+		// 2ì§„ìˆ˜ë¥¼ matrix[][]ì•ˆì— ë‹´ê¸°
+		if (j + 5 >= WIDTH) {	// ë‚´ë¦¼ í•´ì•¼í•˜ë©´
 			for (k = 0; k < WIDTH - j; k++) {
 				matrix[i][j + k] = (binary[k] == '1' ? 1 : 0);
 			}
@@ -93,7 +86,7 @@ void DO_transform_to_matrix(void) {	//°İÀÚ·Î º¯È¯
 				matrix[i][j] = (binary[k] == '1' ? 1 : 0);
 			}
 		}
-		else {	// ¹Ù·Î ³ÖÀ» ¼ö ÀÖÀ¸¸é
+		else {	// ë°”ë¡œ ë„£ì„ ìˆ˜ ìˆìœ¼ë©´
 			for (k = 0; k < 6; k++) {
 				matrix[i][j + k] = (binary[k] == '1' ? 1 : 0);
 			}
@@ -101,7 +94,7 @@ void DO_transform_to_matrix(void) {	//°İÀÚ·Î º¯È¯
 		}
 	}
 
-	for (k = 0; k < WIDTH - j; k++) { //³²Àº 0~5Ä­ Ã¤¿ì±â
+	for (k = 0; k < WIDTH - j; k++) { //ë‚¨ì€ 0~5ì¹¸ ì±„ìš°ê¸°
 		matrix[i][j + k] = (binary[k] == '1' ? 1 : 0);
 	}
 	PrintMatrix(":INIT_MATRIX");
@@ -113,13 +106,13 @@ void DO_playCA(void) {
 
 	for (t = 0; t < PLAYTIME; t++)
 	{
-		//ÁÖÀ§ °³¼ö °è»ê
+		//ì£¼ìœ„ ê°œìˆ˜ ê³„ì‚°
 		for (i = 0; i < HEIGHT; i++)
 			for (j = 0; j < WIDTH; j++)
 				for (k = 0; k < 8; k++)
-					if (matrix[(i + dx[k] + HEIGHT) % HEIGHT][(j + dy[k] + WIDTH) % WIDTH]) matrix2[i][j]++;	//Åä·¯½ºÇü °İÀÚ
+					if (matrix[(i + dx[k] + HEIGHT) % HEIGHT][(j + dy[k] + WIDTH) % WIDTH]) matrix2[i][j]++;	//í† ëŸ¬ìŠ¤í˜• ê²©ì
 
-		//±ÔÄ¢ ÆÇ´Ü
+		//ê·œì¹™ íŒë‹¨
 		for (i = 0; i < HEIGHT; i++)
 		{
 			for (j = 0; j < WIDTH; j++)
@@ -132,7 +125,7 @@ void DO_playCA(void) {
 
 		memset(matrix2, 0, sizeof(matrix2));
 
-		printf(":%d ", t); PrintMatrix("PLAYING");
+		myPrint(":%d ", t); PrintMatrix("PLAYING");
 	}
 }
 
@@ -140,8 +133,7 @@ void DO_transform_to_string(void) {
 	int i = 0, j = 0, t, k, num = 0;
 
 	PrintMatrix(":END_PLAY");
-	if (IS_FILE_PRINT) fprintf(logfp, "Hash Code:\n");
-	else printf("Hash Code:\n");
+	myPrint("Hash Code:\n");
 
 	while (!(i == HEIGHT - 1 && j + 5 >= WIDTH))
 	{
@@ -154,19 +146,17 @@ void DO_transform_to_string(void) {
 			num *= 2;
 		}
 		num /= 2;
-		if (IS_FILE_PRINT) fprintf(logfp, "%c", hashtable[num]);
-		else printf("%c", hashtable[num]);
+		myPrint("%c", hashtable[num]);
 	}
 
-	// 0~5(WIDTH-j)°³ÀÇ °ªÀ» matrix¿¡¼­ °¡Á®¿À±â
+	// 0~5(WIDTH-j)ê°œì˜ ê°’ì„ matrixì—ì„œ ê°€ì ¸ì˜¤ê¸°
 	num = 0;
 	for (k = 0; k < WIDTH - j; k++) {
 		num += matrix[i][j + k];
 		num *= 2;
 	}
 	num /= 2;
-	if (IS_FILE_PRINT) fprintf(logfp, "%c\n", hashtable[num]);
-	else printf("%c\n", hashtable[num]);
+	myPrint("%c\n", hashtable[num]);
 }
 
 void myPrint(const char str[], ...) {
