@@ -24,7 +24,7 @@ constexpr auto PLAYTIME = 100;
 constexpr auto HEIGHT = 32;
 constexpr auto WIDTH = 23;
 constexpr auto IS_SALT = 0;
-constexpr auto IS_FILE_PRINT = 0;
+constexpr auto PRINT_MODE = 0;	// 0: none, 1: stdout, 2: file
 
 extern FILE *logfp;
 extern char hashtable[64];
