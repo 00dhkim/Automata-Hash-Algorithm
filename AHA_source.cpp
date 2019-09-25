@@ -15,7 +15,7 @@ int main()
 		strcat(input, salt);
 		myPrint("salt: %s\n", salt);
 	}
-	if (!IS_FILE_PRINT) {
+	if (PRINT_MODE == 1) {
 		system("pause"); system("cls");
 	}
 
@@ -27,8 +27,8 @@ int main()
 
 	DO_transform_to_string();	// 문자로 변환
 
-	if (IS_FILE_PRINT) fprintf(logfp, "\n==========================\n\n");
-	else system("pause");
+	if (PRINT_MODE == 2) fprintf(logfp, "\n==========================\n\n");
+	else if(PRINT_MODE == 1) system("pause");
 	
 	return 0;
 }
