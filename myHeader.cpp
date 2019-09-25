@@ -49,7 +49,7 @@ void PrintMatrix(const char str[])
 		}
 		myPrint("\n");
 	}
-	if (!IS_FILE_PRINT) {
+	if (PRINT_MODE == 1) {
 		system("pause");
 		system("cls");
 	}
@@ -163,9 +163,9 @@ void myPrint(const char str[], ...) {
 	va_list arg;
 
 	va_start(arg, str);
-	if (IS_FILE_PRINT)
+	if (PRINT_MODE == 2)
 		vfprintf(logfp, str, arg);
-	else
+	else if (PRINT_MODE == 1)
 		vprintf(str, arg);
 	va_end(arg);
 }	// Made by DongHwan
