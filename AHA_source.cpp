@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include <Windows.h>
 #include <string.h>
 #include "myHeader.h"
@@ -8,7 +6,6 @@
 int main()
 {
 	srand((int)time(NULL));
-
 	printf("input: ");
 	scanf("%s", input);
 	myPrint("input: %s\n", input);
@@ -33,6 +30,5 @@ int main()
 	if (IS_FILE_PRINT) fprintf(logfp, "\n==========================\n\n");
 	else system("pause");
 	
-
 	return 0;
 }
