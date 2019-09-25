@@ -3,8 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <stdarg.h>
 #include <string.h>
+#include <time.h>
 
 void swap(int &a, int &b);
 int random(int a, int b);
