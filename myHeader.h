@@ -18,7 +18,7 @@ void DO_transform_to_matrix(void);
 void DO_playCA(void);
 void DO_transform_to_string(void);
 
-void myPrint(const char str[], ...);	// Made by DongHwan
+void logPrint(const char str[], ...);	// Made by DongHwan
 
 constexpr auto PLAYTIME = 100;
 constexpr auto HEIGHT = 32;
