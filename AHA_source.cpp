@@ -8,12 +8,12 @@ int main()
 	srand((int)time(NULL));
 	printf("input: ");
 	scanf("%s", input);
-	myPrint("input: %s\n", input);
+	logPrint("input: %s\n", input);
 	if (IS_SALT) {
 		printf("salt: ");
 		scanf("%s", salt);
 		strcat(input, salt);
-		myPrint("salt: %s\n", salt);
+		logPrint("salt: %s\n", salt);
 	}
 	if (PRINT_MODE == 1) {
 		system("pause"); system("cls");
@@ -30,5 +30,6 @@ int main()
 	if (PRINT_MODE == 2) fprintf(logfp, "\n==========================\n\n");
 	else if(PRINT_MODE == 1) system("pause");
 	
+	fclose(logfp);
 	return 0;
 }
