@@ -1,15 +1,15 @@
 #include <Windows.h>
 #include "myHeader.h"
 
-FILE *fp = fopen("rt_pair.txt", "a+");
+FILE *pairfp = fopen("rt_pair.txt", "a+");
 
 void fPrintMatrix_rt()	// rt_pair.txt에 matrix 쌓는 함수
 {
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
-			fprintf(fp, "%d", matrix[i][j]);
+			fprintf(pairfp, "%d", matrix[i][j]);
 		}
-		fprintf(fp, "\n");
+		fprintf(pairfp, "\n");
 	}
 }
 
@@ -22,9 +22,10 @@ void decToBinary(int n)
 		n = n / 2;
 		i++;
 	}
+	fprintf(pairfp, "#");
 	for (int j = 5; j >= 0; j--)
-		fprintf(fp, "%d", binaryNum[j]);
-	fprintf(fp, "\n");
+		fprintf(pairfp, "%d", binaryNum[j]);
+	fprintf(pairfp, "\n");
 }
 
 // 모든 input bits에 대해서 matrix 출력하기
@@ -61,7 +62,7 @@ int main()
 		fPrintMatrix_rt();
 	}
 
-	fclose(fp);
+	fclose(pairfp);
 	return 0;
 }
 
