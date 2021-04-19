@@ -1,0 +1,33 @@
+HEIGHT: 32, WIDTH: 23, IS_SALT: 0, input character: 1
+
+000000	 0	a
+010101	21	v
+101010	42	Q
+111111	63	-
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+- 1회 실행시 모든 matrix가 0이됨
+
+001011	11	l
+110100	52	0
+0yjdP2d-MdPinykWyWhEGah+pGfzuQ1W+WZ47iHRqnHmp9gxtUUxERiYV3G0d4x9bHnBaib4bYfaniaZM0mFXY37aaFPa-8GbJ1eJ-44hgWbRnJYZ-GDVGjiWac
+- 정확히 반전, 그러나 1회 실행 후 모양이 같아짐(충돌)
+
+001101	13	n
+110010	50	Y
+ayqaGt+aH-TdzD2kyBKZaFRPX--lJ7OgZD5R4XWbJGCWcCVgqjSN4EtcdDp1WyoVY7bdj4FK2qjJ05am4hgaomFwE7nGxFht-+oxx4dmNyzrU6Bc3+eb-ieaiya
+- 마찬가지로 반전, 1회 실행 후 충돌
+
+010011	19	t
+101100	44	S
+qamsqh24h-npgZwanJGCF-eIVgae-8cx4adFTop4WTNmasWcHoaEaqdAYgc-OFaShV1mtv7P13lPI-WYgWlwetCFmn8oTuQAGhX-Gaf7GmynqAWsxbN-bUxcqyl
+- 반전
+
+010110	22	w
+101001	41	P
+PFPYCWkWlJdXhGR7uGGY3orM+oZF4CpS4CnrWqedkzEac50xG7H0qge7cTG8L+K8g1dCHGiUhChOUDab6ztaGiokW4C3W4F7nX9MjZTmeeRFuhIpdhqnqm5ox6f
+- 반전
+
+011011	27	B
+100100	36	K
+d1fXgFd7H+pJdgBigiyeG1qBiMaotW5MG4Wba4OhdXb76oS-4qFUCl+SemCjaycq4WG1-q534iF81XFEcpdGuCcamCfMCpjWbKtykSeGyrGtzJdhX+hFd5IoIVa
+- 반전
